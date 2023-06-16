@@ -25,6 +25,7 @@ public class EtudiantController {
 	}
 	
 	@PostMapping("creerEtu")
+//	@PostMapping("enregistrerEtu")
 	public String saveEtu(@ModelAttribute("etu") Etudiant e)
 	{
 //		Etudiant e1 = new Etudiant(n, prenom, tel, email);

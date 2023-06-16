@@ -24,6 +24,7 @@
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">Formulaire Inscription Etudiant</h3>
 
+<!-- 				<form action="enregistrerEtu" method="post" modelAttribute="etu"> -->
 				<form method="post" modelAttribute="etu">
                 <div class="row">
                   <div class="col-md-6 mb-4">
