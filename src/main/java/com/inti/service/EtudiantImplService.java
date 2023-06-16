@@ -1,5 +1,6 @@
 package com.inti.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,8 +20,18 @@ public class EtudiantImplService implements IEtudiantService {
 
 	@Override
 	public List<Etudiant> getEtudiants() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Etudiant> listeE = new ArrayList<>();
+		try {			
+			session.beginTransaction();
+			
+			listeE = session.createQuery("from Etudiant", Etudiant.class).list();
+			
+			session.getTransaction().commit();			
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return listeE;
 	}
 
 	@Override
@@ -34,20 +45,37 @@ public class EtudiantImplService implements IEtudiantService {
 		} catch (Exception e2) {
 			e2.printStackTrace();
 			session.getTransaction().rollback();
-		}
-		
+		}		
 	}
 
 	@Override
 	public Etudiant getEtudiant(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Etudiant e = null;
+		try {			
+			session.beginTransaction();
+			
+			e = session.get(Etudiant.class, id);
+			
+			session.getTransaction().commit();			
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return e;
 	}
 
 	@Override
 	public void deleteEtudiant(int id) {
-		// TODO Auto-generated method stub
-		
+		try {			
+			session.beginTransaction();
+			
+			session.delete(session.get(Etudiant.class, id));
+			
+			session.getTransaction().commit();			
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			session.getTransaction().rollback();
+		}		
 	}
 
 }
